@@ -1,0 +1,81 @@
+<script type="text/javascript">
+    var list = new Array(); // totoal items
+    var pageList = new Array();
+    var currentPage = 1;
+    var numberPerPage = 5;
+    var totalPages = 0;
+
+function makeList() {
+    for (x = 0; x < 200; x++)
+        list.push(x);
+
+   // totalPages = getNumberOfPages();
+    totalPages = getNumberOfPages();
+}
+    
+function getNumberOfPages() {
+    return Math.ceil(list.length / numberPerPage);
+}
+
+function nextPage() {
+    currentPage += 1;
+    loadList();
+}
+
+function previousPage() {
+    currentPage -= 1;
+    loadList();
+}
+
+function firstPage() {
+    currentPage = 1;
+    loadList();
+}
+
+function lastPage() {
+    currentPage = totalPages;
+    loadList();
+}
+
+function loadList() {
+    var begin = ((currentPage - 1) * numberPerPage);
+    var end = begin + numberPerPage;
+
+    pageList = list.slice(begin, end);
+    drawList();
+    check();
+}
+    
+function drawList() {
+    document.getElementById("list").innerHTML = "";
+    for (r = 0; r < pageList.length; r++) {
+        document.getElementById("list").innerHTML += "<a href=test.html>" + pageList[r] + " </a> <br/> ";
+    }
+}
+
+function check() {
+    document.getElementById("next").disabled = currentPage == totalPages ? true : false;
+    document.getElementById("previous").disabled = currentPage == 1 ? true : false;
+    document.getElementById("first").disabled = currentPage == 1 ? true : false;
+    document.getElementById("last").disabled = currentPage == totalPages ? true : false;
+}
+
+function load() {
+    makeList();
+    loadList();
+}
+    
+window.onload = load;
+</script>
+
+
+<body>
+    <div style="text-align:center;">
+    <input type="button" id="first" onclick="firstPage()" value="first" />
+    <input type="button" id="next" onclick="nextPage()" value="next" />
+    <input type="button" id="previous" onclick="previousPage()" value="previous" />
+    <input type="button" id="last" onclick="lastPage()" value="last" />
+
+    <div id="list"></div>
+    </div>
+</body>
