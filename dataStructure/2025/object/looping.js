@@ -48,3 +48,42 @@ for (let value of Object.values(obj)) {
 const objWithoutProto = Object.create(null);
 
 console.log("objWithoutProto:", objWithoutProto);
+
+const animal = {
+	speak() {
+		console.log("Roar!");
+	},
+};
+
+const tiger = { type: "Bengal" };
+
+// Object.setPrototypeOf(tiger, animal);
+
+// tiger.speak(); // "Roar!" — inherited from animal
+
+// console.log(tiger)
+animal.speak.call(tiger);
+animal.speak.apply(tiger);
+
+//Object.assign(target, ...sources )
+/*
+
+ Limitations
+• 	Doesn’t copy non-enumerable or symbol properties
+• 	Doesn’t preserve prototype chain
+• 	Doesn’t deep clone nested objects
+
+*/
+
+const target = { a: 1 };
+const source = { b: 2 };
+
+Object.assign(target, source);
+console.log("Target: ", target); // { a: 1, b: 2 }
+
+console.log("============================== ");
+
+//console.log("data:", data); // ReferenceError: Cannot access 'data' before initialization
+
+let data;
+console.log("data:", data); // undefined
