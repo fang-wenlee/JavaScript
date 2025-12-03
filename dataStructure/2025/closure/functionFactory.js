@@ -58,7 +58,12 @@ function discountFactory(customerType) {
 	const discount = discountRates[customerType] || 0;
 
 	return function (price) {
-		return price - price * discount;
+		let finalPrice;
+		finalPrice = price - price * discount;
+
+		return `Final price for ${customerType} after ${
+			discount * 100
+		}% discount is ${finalPrice.toFixed(2)}`;
 	};
 }
 
