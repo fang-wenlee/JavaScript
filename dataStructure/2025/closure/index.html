@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Debounce Example</title>
+		<script src="./debouncing.js"></script>
+		<style>
+			body {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				margin: 0;
+				min-height: 20vh;
+			}
+			div {
+				display: flex;
+				justify-content: center;
+				flex-direction: column;
+				padding: 30px;
+			}
+			.increment_btn {
+				background-color: #4caf50; /* Green */
+				border: none;
+				color: white;
+				padding: 4px 10px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 4px 2px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>DEBOUNCING EXAMPLE:</h2>
+		<div>
+			<button class="increment_btn">Increment</button>
+			<p>Button Clicked <span class="count">0</span> Times</p>
+			<p>Triggered <span class="triggered">0</span> Times</p>
+		</div>
+		<div>
+			<h2>DEBOUNCING EXAMPLE 2: ====================================</h2>
+			<input
+				type="text"
+				onkeyup="betterDebounce()"
+				style="width: 150px; padding: 6px; font-size: 16px"
+			/>
+		</div>
+	</body>
+</html>
